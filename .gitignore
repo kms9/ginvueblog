@@ -13,3 +13,5 @@
 *.out
 /log/
 config/config.ini
+/web/front/dist
+/web/admin/dist
