@@ -1,0 +1,27 @@
+yc:
+  redis:
+    ginblog:
+      addr: 127.0.0.1:6379
+      password:
+      db: 1
+      maxIdle: 200
+      maxActive: 500
+      idleTimeout: 120
+  mysql:
+    ginblog:
+      host: 127.0.0.1
+      port: 3306
+      user: root
+      password: 123456
+      db: goblog
+      sslMode: disable
+      maxIdleConns: 30
+      maxOpenConns: 100
+      connMaxLifetime: 300s
+      debug: false
+      singularTable: true
+      disableMetric: false
+      slowThreshold: 500ms
+      updatecolumn:
+        - updateTime
+env: development

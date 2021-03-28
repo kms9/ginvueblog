@@ -1,0 +1,22 @@
+yc:
+  server:
+    http:
+      name: ginblog
+      port: 10010 # Gin端口
+      mode: release
+  logger:
+    level: info
+  request: # 接口请求
+    debug: true
+    slowRequest: 1s
+    projects:
+      user:
+        api:
+          getById:
+            path: /user/{uid}
+            method: GET
+            header:
+            query:
+            pathParams:
+              - uid
+            bodyRequire: false

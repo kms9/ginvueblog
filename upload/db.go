@@ -2,7 +2,7 @@ package model
 
 import (
 	"fmt"
-	"ginblog/utils"
+	"ginvueblog/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -17,11 +17,11 @@ var err error
 func InitDb() {
 
 	dns := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		utils.DbUser,
-		utils.DbPassWord,
-		utils.DbHost,
-		utils.DbPort,
-		utils.DbName,
+		config.DbUser,
+		config.DbPassWord,
+		config.DbHost,
+		config.DbPort,
+		config.DbName,
 	)
 	db, err = gorm.Open(mysql.Open(dns), &gorm.Config{
 		// gorm日志模式：silent
