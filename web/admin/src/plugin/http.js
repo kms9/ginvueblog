@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-let Url = 'http://qqt.feibooks.com/api/v1/'
+let Url = 'http://127.0.0.1:3000/api/v1/'
 
 axios.defaults.baseURL = Url
 
