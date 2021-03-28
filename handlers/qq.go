@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"ginblog/config"
+	"ginvueblog/config"
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"io/ioutil"

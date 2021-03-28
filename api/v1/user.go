@@ -1,9 +1,9 @@
 package v1
 
 import (
-	"ginblog/model"
-	"ginblog/utils/errmsg"
-	"ginblog/utils/validator"
+	"ginvueblog/model"
+	"ginvueblog/utils/errmsg"
+	"ginvueblog/utils/validator"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"

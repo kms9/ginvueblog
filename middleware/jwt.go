@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"ginblog/utils"
-	"ginblog/utils/errmsg"
+	"ginvueblog/config"
+	"ginvueblog/utils/errmsg"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-var JwtKey = []byte(utils.JwtKey)
+var JwtKey = []byte(config.JwtKey)
 
 type MyClaims struct {
 	Username string `json:"username"`

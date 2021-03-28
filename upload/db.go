@@ -1,8 +1,9 @@
-package model
+package upload
 
 import (
 	"fmt"
 	"ginvueblog/config"
+	"ginvueblog/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -43,7 +44,7 @@ func InitDb() {
 	}
 
 	// 迁移数据表，在没有数据表结构变更时候，建议注释不执行
-	_ = db.AutoMigrate(&User{}, &Article{}, &Category{}, Profile{}, Comment{})
+	_ = db.AutoMigrate(&model.User{}, &model.Article{}, &model.Category{}, model.Profile{}, model.Comment{})
 	db.Logger.LogMode(logger.Info)
 	sqlDB, _ := db.DB()
 

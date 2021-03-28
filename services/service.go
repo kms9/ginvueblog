@@ -2,7 +2,7 @@ package services
 
 import (
 	"github.com/gin-gonic/gin"
-	"ginblog/setup"
+	"ginvueblog/setup"
 	onion_log "github.com/kms9/publicyc/pkg/onion-log"
 	"github.com/kms9/publicyc/pkg/onion-log/logger"
 )

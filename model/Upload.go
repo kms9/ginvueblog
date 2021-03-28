@@ -2,17 +2,17 @@ package model
 
 import (
 	"context"
-	"ginblog/utils"
-	"ginblog/utils/errmsg"
+	"ginvueblog/config"
+	"ginvueblog/utils/errmsg"
 	"github.com/qiniu/go-sdk/v7/auth/qbox"
 	"github.com/qiniu/go-sdk/v7/storage"
 	"mime/multipart"
 )
 
-var AccessKey = utils.AccessKey
-var SecretKey = utils.SecretKey
-var Bucket = utils.Bucket
-var ImgUrl = utils.QiniuSever
+var AccessKey = config.AccessKey
+var SecretKey = config.SecretKey
+var Bucket = config.Bucket
+var ImgUrl = config.QiniuSever
 
 func UpLoadFile(file multipart.File, fileSize int64) (string, int) {
 	putPolicy := storage.PutPolicy{

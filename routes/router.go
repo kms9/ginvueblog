@@ -1,12 +1,13 @@
 package routes
 
 import (
-	"ginblog/api/v1"
-	"ginblog/handlers"
-	"ginblog/middleware"
-	"ginblog/utils"
+	"ginvueblog/api/v1"
+	"ginvueblog/handlers"
+	"ginvueblog/middleware"
+	 //"ginvueblog/config"
 	"github.com/gin-contrib/multitemplate"
 	"github.com/gin-gonic/gin"
+	"github.com/kms9/publicyc/pkg/server/ogin"
 )
 
 func createMyRender() multitemplate.Renderer {
@@ -16,9 +17,13 @@ func createMyRender() multitemplate.Renderer {
 	return p
 }
 
-func InitRouter() {
-	gin.SetMode(utils.AppMode)
-	r := gin.New()
+func StartHttp(server  *ogin.Server) {
+
+//}
+//
+//func InitRouter() {
+	//gin.SetMode(config.AppMode)
+	r := server
 	r.HTMLRender = createMyRender()
 	r.Use(middleware.Log())
 	r.Use(gin.Recovery())
@@ -115,6 +120,6 @@ func InitRouter() {
 		router.GET("commentcount/:id", v1.GetCommentCount)
 	}
 
-	_ = r.Run(utils.HttpPort)
+	//_ = r.Run(config.HttpPort)
 
 }

@@ -13,7 +13,7 @@ yc:
       port: 3306
       user: root
       password: 123456
-      db: goblog
+      db: ginvueblog
       sslMode: disable
       maxIdleConns: 30
       maxOpenConns: 100
@@ -22,6 +22,4 @@ yc:
       singularTable: true
       disableMetric: false
       slowThreshold: 500ms
-      updatecolumn:
-        - updateTime
 env: development

@@ -5,10 +5,9 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
-
 	"github.com/gomodule/redigo/redis"
 	"github.com/silenceper/log"
-	"ginblog/setup"
+	"ginvueblog/setup"
 	"github.com/kms9/publicyc/pkg/store/oredis"
 	"github.com/kms9/publicyc/pkg/util/ostring"
 )
