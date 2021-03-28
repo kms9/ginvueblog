@@ -15,3 +15,7 @@
 config/config.ini
 /web/front/dist
 /web/admin/dist
+/go.sum
+/web/admin/package-lock.json
+/web/front/package-lock.json
+/vendor
