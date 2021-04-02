@@ -30,4 +30,4 @@ require (
 	gorm.io/gorm v1.20.12
 )
 
-replace github.com/kms9/publicyc => D:\yc_repo\yc
+replace github.com/kms9/publicyc => ../yc
