@@ -25,7 +25,6 @@ func NewEngine() *Engine {
 		//setup.StartDB,
 		setup.StartMysqlDB,
 		//setup.StartRequest,
-
 		cache.Init,
 		services.ServiceInit,
 		eng.serveHTTP,
@@ -53,7 +52,7 @@ func main() {
 
 	//config.Init()
 	//model.Init()
-
+	
 	eng := NewEngine()
 	if err := eng.Run(); err != nil {
 		fmt.Println(err.Error())

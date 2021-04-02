@@ -3,6 +3,7 @@ package handlers
 import (
 	"ginvueblog/config"
 	"github.com/gin-gonic/gin"
+	"github.com/kms9/publicyc/pkg/conf"
 	"html/template"
 	"io/ioutil"
 	"net/http"
@@ -28,6 +29,7 @@ func  Index(c *gin.Context) {
 		飞书Go技术分享
 	</body>
 `
+	fmt.Println(conf.Detail())
 	c.Status(200)
 	tmpl, err := template.New("htmlTest").Parse(html)
 	if err != nil {

@@ -2,7 +2,6 @@ package model
 
 import (
 	"ginvueblog/setup"
-	"ginvueblog/upload"
 	"ginvueblog/utils/errmsg"
 	"gorm.io/gorm"
 )
@@ -96,8 +95,8 @@ func EditArt(id int, data *Article) int {
 	maps["content"] = data.Content
 	maps["img"] = data.Img
 	
-	upload.err = setup.MysqlDB.Model(&art).Where("id = ? ", id).Updates(&maps).Error
-	if upload.2+err != nil {
+	err := setup.MysqlDB.Model(&art).Where("id = ? ", id).Updates(&maps).Error
+	if err != nil {
 		return errmsg.ERROR
 	}
 	return errmsg.SUCCSE
@@ -106,8 +105,8 @@ func EditArt(id int, data *Article) int {
 // 删除文章
 func DeleteArt(id int) int {
 	var art Article
-	upload.err = setup.MysqlDB.Where("id = ? ", id).Delete(&art).Error
-	if upload.err != nil {
+	err := setup.MysqlDB.Where("id = ? ", id).Delete(&art).Error
+	if err != nil {
 		return errmsg.ERROR
 	}
 	return errmsg.SUCCSE

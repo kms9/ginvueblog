@@ -1,7 +1,7 @@
 package model
 
 import (
-	"ginvueblog/upload"
+	"ginvueblog/setup"
 	"ginvueblog/utils/errmsg"
 )
 
@@ -22,8 +22,8 @@ type Profile struct {
 // 获取个人信息设置
 func GetProfile(id int) (Profile, int) {
 	var profile Profile
-	upload.err = upload.db.Where("ID = ?", id).First(&profile).Error
-	if upload.err != nil {
+	err := setup.MysqlDB.Where("ID = ?", id).First(&profile).Error
+	if err != nil {
 		return profile, errmsg.ERROR
 	}
 	return profile, errmsg.SUCCSE
@@ -32,8 +32,8 @@ func GetProfile(id int) (Profile, int) {
 // 更新个人信息设置
 func UpdateProfile(id int, data *Profile) int {
 	var profile Profile
-	upload.err = upload.db.Model(&profile).Where("ID = ?", id).Updates(&data).Error
-	if upload.err != nil {
+	err := setup.MysqlDB.Model(&profile).Where("ID = ?", id).Updates(&data).Error
+	if err != nil {
 		return errmsg.ERROR
 	}
 	return errmsg.SUCCSE

@@ -1,7 +1,7 @@
 yc:
   server:
     http:
-      name: ginblog
+      name: ginvueblog
       port: 3000 # Gin端口
       mode: release
   logger:
