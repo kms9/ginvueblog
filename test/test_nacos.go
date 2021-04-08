@@ -1,14 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	log "github.com/sirupsen/logrus"
 	"os"
-	"fmt"
 	"os/signal"
-	"syscall"
 )
 
 func init()  {
@@ -24,10 +23,10 @@ func init()  {
 }
 func ConnNacos()  {
 	var (
-		serverAdd = "127.0.0.1"
+		serverAdd = "192.168.31.201"
 		dataId    = "qq-config"
 		group     = "DEFAULT_GROUP"
-		nameSpaceId = "5a091299-14bd-459b-95ee-78a8d770e65e"
+		nameSpaceId = "4793f393-e460-43df-bace-99c8ba4cbe06"
 		//port      = 8848
 	)
 
@@ -36,7 +35,7 @@ func ConnNacos()  {
 		{
 			IpAddr: serverAdd,
 			Port:   8848,
-			Scheme: "grpc",
+			Scheme: "http",
 			ContextPath: "/nacos",
 		},
 	}
@@ -101,7 +100,7 @@ func ConnNacos()  {
 func main()  {
 
 	c := make(chan os.Signal)
-	signal.Notify(c, os.Interrupt,os.Kill,syscall.SIGUSR1,syscall.SIGUSR2)
+	signal.Notify(c, os.Interrupt,os.Kill)
 	fmt.Println("start!")
 
 

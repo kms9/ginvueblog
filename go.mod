@@ -3,7 +3,9 @@ module ginvueblog
 go 1.16
 
 require (
+	github.com/coreos/etcd v3.3.25+incompatible // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-contrib/multitemplate v0.0.0-20200916052041-666a7309d230
 	github.com/gin-gonic/gin v1.6.3
@@ -11,6 +13,7 @@ require (
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-playground/validator/v10 v10.4.1
 	github.com/gomodule/redigo v1.8.2
+	github.com/google/uuid v1.2.0 // indirect
 	github.com/jonboulle/clockwork v0.2.0 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/kms9/publicyc v0.0.0-00010101000000-000000000000
@@ -30,6 +33,7 @@ require (
 	google.golang.org/protobuf v1.25.0 // indirect
 	gopkg.in/ini.v1 v1.62.0
 	gorm.io/gorm v1.20.12
+	sigs.k8s.io/yaml v1.2.0 // indirect
 )
 
 replace github.com/kms9/publicyc => ../yc

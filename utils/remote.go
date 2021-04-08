@@ -13,7 +13,6 @@ import (
 
 type RemoteConfig struct {
 	viper.RemoteProvider
-
 	Username string
 	Password string
 }
