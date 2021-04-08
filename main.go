@@ -24,7 +24,7 @@ func NewEngine() *Engine {
 		setup.StartLogger,
 		setup.StartRedis,
 		setup.StartConfig,
-		setup.StartNConfig,
+		//setup.StartNConfig,
 		//setup.StartDB,
 		//setup.StartMysqlDB,
 		//setup.StartRequest,

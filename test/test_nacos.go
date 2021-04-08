@@ -7,6 +7,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"os"
 	"fmt"
+	"os/signal"
+	"syscall"
 )
 
 func init()  {
@@ -34,11 +36,10 @@ func ConnNacos()  {
 		{
 			IpAddr: serverAdd,
 			Port:   8848,
-			Scheme: "http",
+			Scheme: "grpc",
 			ContextPath: "/nacos",
 		},
 	}
-
 
 	cc := constant.ClientConfig{
 		NamespaceId:         nameSpaceId, //namespace id
@@ -49,8 +50,8 @@ func ConnNacos()  {
 		RotateTime:          "1h",
 		MaxAge:              3,
 		LogLevel:            "debug",
+		//ListenInterval:
 	}
-
 
 	// a more graceful way to create config client
 	client, err := clients.NewConfigClient(
@@ -86,17 +87,26 @@ func ConnNacos()  {
 	if err!=nil{
 		log.Error(err)
 	}
-	err = client.ListenConfig(vo.ConfigParam{
-		DataId: dataId,
-		Group:  group,
-		OnChange: func(namespace, group, dataId, data string) {
-			fmt.Println("config changed group:" + group + ", dataId:" + dataId + ", content:" + data)
-		},
-	})
-	if err!=nil{
-		log.Error(err)
-	}
+	//err = client.ListenConfig(vo.ConfigParam{
+	//	DataId: dataId,
+	//	Group:  group,
+	//	OnChange: func(namespace, group, dataId, data string) {
+	//		fmt.Println("config changed group:" + group + ", dataId:" + dataId + ", content:" + data)
+	//	},
+	//})
+	//if err!=nil{
+	//	log.Error(err)
+	//}
 }
 func main()  {
+
+	c := make(chan os.Signal)
+	signal.Notify(c, os.Interrupt,os.Kill,syscall.SIGUSR1,syscall.SIGUSR2)
+	fmt.Println("start!")
+
+
 	ConnNacos()
+
+	s := <-c
+	fmt.Println("stop,signal:",s)
 }
