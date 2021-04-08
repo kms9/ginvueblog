@@ -2,6 +2,7 @@ package setup
 
 import (
 	"errors"
+	"github.com/kms9/publicyc/pkg/util"
 	"sync"
 
 	onion_log "github.com/kms9/publicyc/pkg/onion-log"
@@ -17,6 +18,9 @@ func StartLogger() error {
 		Logger = onion_log.UseConfig("logger").Build()
 		if Logger == nil {
 			err = errors.New("setup.logger start failed")
+		}
+		if util.GetGoEnv() != "production" {
+			Logger.Logger.SetReportCaller(true)
 		}
 	})
 	return err

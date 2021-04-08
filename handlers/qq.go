@@ -1,7 +1,9 @@
 package handlers
 
 import (
+	"fmt"
 	"ginvueblog/config"
+	"ginvueblog/setup"
 	"github.com/gin-gonic/gin"
 	"github.com/kms9/publicyc/pkg/conf"
 	"html/template"
@@ -9,7 +11,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
 )
 
 
@@ -40,8 +41,6 @@ func  Index(c *gin.Context) {
 	})
 
 }
-
-
 
 // qq回调逻辑
 func CallBack(c *gin.Context) {
@@ -138,4 +137,17 @@ func convertToMap(str string) map[string]string {
 		resultMap[vs[0]] = vs[1]
 	}
 	return resultMap
+}
+
+// qq回调逻辑
+func TestConf(c *gin.Context) {
+
+	testKey:= setup.ReConfig.GetString("yc.testKey.key1")
+	fmt.Println(testKey)
+
+	//log.Info(testKey)
+	setup.Logger.Logger.Info(testKey)
+	c.JSON(http.StatusOK, gin.H{
+		"testKey" : testKey,
+	})
 }

@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"gopkg.in/ini.v1"
 )
 
@@ -17,7 +16,6 @@ type PrivateInfo struct {
 	RefreshToken string `json:"refresh_token"`
 	OpenId       string `json:"openid"`
 }
-
 
 var (
 	AppMode  string
@@ -38,13 +36,13 @@ var (
 )
 
 func init() {
-	file, err := ini.Load("config/config.ini")
-	if err != nil {
-		fmt.Println("配置文件读取错误，请检查文件路径:", err)
-	}
-	LoadServer(file)
-	LoadData(file)
-	LoadQiniu(file)
+	//file, err := ini.Load("config/config.ini")
+	//if err != nil {
+	//	fmt.Println("配置文件读取错误，请检查文件路径:", err)
+	//}
+	//LoadServer(file)
+	//LoadData(file)
+	//LoadQiniu(file)
 }
 
 func LoadServer(file *ini.File) {

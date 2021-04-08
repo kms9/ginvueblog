@@ -43,6 +43,8 @@ func StartHttp(server  *ogin.Server) {
 	r.POST("/qq/callback", handlers.CallBack)
 	r.GET("/auth", handlers.Index)
 
+	r.GET("/testkey",  handlers.TestConf)
+
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(200, "front", nil)
 	})

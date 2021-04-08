@@ -22,4 +22,6 @@ yc:
       singularTable: true
       disableMetric: false
       slowThreshold: 500ms
+  testKey:
+    key1: "xxxx3"
 env: development

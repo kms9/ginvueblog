@@ -8,6 +8,7 @@ import (
 	"ginvueblog/setup"
 	"github.com/kms9/publicyc"
 	"github.com/kms9/publicyc/pkg/server/ogin"
+	//_ "github.com/spf13/viper/remote"
 )
 
 
@@ -22,8 +23,10 @@ func NewEngine() *Engine {
 	if err := eng.Start(
 		setup.StartLogger,
 		setup.StartRedis,
+		setup.StartConfig,
+		setup.StartNConfig,
 		//setup.StartDB,
-		setup.StartMysqlDB,
+		//setup.StartMysqlDB,
 		//setup.StartRequest,
 		cache.Init,
 		services.ServiceInit,
@@ -52,7 +55,8 @@ func main() {
 
 	//config.Init()
 	//model.Init()
-	
+
+
 	eng := NewEngine()
 	if err := eng.Run(); err != nil {
 		fmt.Println(err.Error())

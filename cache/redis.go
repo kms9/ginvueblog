@@ -12,7 +12,7 @@ import (
 	"github.com/kms9/publicyc/pkg/util/ostring"
 )
 
-var redisInstance *htRedis
+var RedisInstance *htRedis
 
 type htRedis struct {
 	*oredis.Redis
