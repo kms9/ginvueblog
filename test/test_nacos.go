@@ -21,12 +21,30 @@ func init()  {
 		log.SetLevel(log.TraceLevel)
 		log.SetReportCaller(true)
 }
+
+var ConfigMap = map[string]map[string]string{
+		"208" : {
+			"serverAdd" : "10.8.8.208",
+			"dataId"    : "qq-config",
+			"group"     : "DEFAULT_GROUP",
+			"nameSpaceId" : "2baea186-51ba-459e-bfa8-4c222d16c308",
+		},
+
+		"201": {
+			"serverAdd" : "192.168.31.201",
+			"dataId"    : "qq-config",
+			"group"     : "DEFAULT_GROUP",
+			"nameSpaceId" : "4793f393-e460-43df-bace-99c8ba4cbe06",
+		},
+}
+
 func ConnNacos()  {
+	tconfig:=ConfigMap["208"]
 	var (
-		serverAdd = "192.168.31.201"
-		dataId    = "qq-config"
-		group     = "DEFAULT_GROUP"
-		nameSpaceId = "4793f393-e460-43df-bace-99c8ba4cbe06"
+		serverAdd = tconfig["serverAdd"]
+		dataId    = tconfig["dataId"]
+		group     = tconfig["group"]
+		nameSpaceId = tconfig["nameSpaceId"]
 		//port      = 8848
 	)
 
