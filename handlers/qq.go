@@ -142,7 +142,7 @@ func convertToMap(str string) map[string]string {
 // qq回调逻辑
 func TestConf(c *gin.Context) {
 
-	testKey:= setup.ReConfig.GetString("yc.testKey.key1")
+	testKey:= setup.NacosConfig.GetString("yc.testKey.key1")
 	fmt.Println(testKey)
 
 	//log.Info(testKey)

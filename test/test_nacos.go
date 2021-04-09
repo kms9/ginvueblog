@@ -6,8 +6,11 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	log "github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 	"os"
 	"os/signal"
+	"strings"
+	"time"
 )
 
 func init()  {
@@ -20,12 +23,17 @@ func init()  {
 		// Only log the warning severity or above.
 		log.SetLevel(log.TraceLevel)
 		log.SetReportCaller(true)
+
+
 }
+
+var ReConfig  *viper.Viper
+
 
 var ConfigMap = map[string]map[string]string{
 		"208" : {
 			"serverAdd" : "10.8.8.208",
-			"dataId"    : "qq-config",
+			"dataId"    : "qq-redpackets",
 			"group"     : "DEFAULT_GROUP",
 			"nameSpaceId" : "2baea186-51ba-459e-bfa8-4c222d16c308",
 		},
@@ -41,9 +49,9 @@ var ConfigMap = map[string]map[string]string{
 func ConnNacos()  {
 	tconfig:=ConfigMap["208"]
 	var (
-		serverAdd = tconfig["serverAdd"]
-		dataId    = tconfig["dataId"]
-		group     = tconfig["group"]
+		serverAdd 	= tconfig["serverAdd"]
+		dataId    	= tconfig["dataId"]
+		group     	= tconfig["group"]
 		nameSpaceId = tconfig["nameSpaceId"]
 		//port      = 8848
 	)
@@ -92,6 +100,12 @@ func ConnNacos()  {
 		log.Error(err)
 	}
 	fmt.Println("GetConfig,config :" + content)
+	ReConfig = viper.New()
+	ReConfig.SetConfigType("yaml")
+	err = ReConfig.ReadConfig(strings.NewReader(content))
+	if err != nil {
+		log.Fatalln("Viper解析配置失败:", err)
+	}
 
 	//Listen config change,key=dataId+group+namespaceId.
 	err = client.ListenConfig(vo.ConfigParam{
@@ -99,6 +113,10 @@ func ConnNacos()  {
 		Group:  group,
 		OnChange: func(namespace, group, dataId, data string) {
 			fmt.Println("config changed group:" + group + ", dataId:" + dataId + ", content:" + data)
+			err = ReConfig.ReadConfig(strings.NewReader(data))
+			if err != nil {
+				log.Fatalln("Viper解析配置失败:", err)
+			}
 		},
 	})
 	if err!=nil{
@@ -123,7 +141,14 @@ func main()  {
 
 
 	ConnNacos()
-
+	go TestViper()
 	s := <-c
 	fmt.Println("stop,signal:",s)
+}
+
+func TestViper()  {
+	for {
+		time.Sleep(time.Second*5)
+		fmt.Println(ReConfig.GetString("yc.cashApi.scene"))
+	}
 }

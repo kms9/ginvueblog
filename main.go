@@ -22,9 +22,9 @@ func NewEngine() *Engine {
 	eng := &Engine{}
 	if err := eng.Start(
 		setup.StartLogger,
-		setup.StartRedis,
-		setup.StartConfig,
-		//setup.StartNConfig,
+		//setup.StartRedis,
+		//setup.StartConfig,
+		setup.StartNacosConfig,
 		//setup.StartDB,
 		//setup.StartMysqlDB,
 		//setup.StartRequest,
@@ -33,7 +33,8 @@ func NewEngine() *Engine {
 		eng.serveHTTP,
 	); err != nil {
 		//onion_log.Panicf("Engine: %s", err)
-		fmt.Errorf("Engine: %s", err)
+		err := fmt.Errorf("Engine: %s", err)
+		panic(err)
 	}
 	return eng
 }

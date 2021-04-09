@@ -1,0 +1,33 @@
+yc:
+  redis:
+    qq_redpackets:
+      addr: 10.8.8.118:6379
+      password: Yangcong345
+      db: 5
+      maxIdle: 200
+      maxActive: 500
+      idleTimeout: 120
+  pg:
+    qq_redpackets:
+      host: 10.8.8.108
+      port: 5432
+      user: postgres
+      password: parentspg94
+      db: "qq_redpackets"
+      sslMode: disable
+      maxIdleConns: 30
+      maxOpenConns: 100
+      connMaxLifetime: 300s
+      debug: true
+      singularTable: true
+      disableMetric: false
+      slowThreshold: 500ms
+  requestUrls:
+    promoteCode: "http://10.8.8.208:3030"           # 获取用户专属口令  https://yapi.yc345.tv/project/1375/interface/api/35350
+    usercore: "http://usercore.base.yc345.tv"       # 获取用户基本 https://yapi.yc345.tv/project/532/interface/api/13539
+    orderInfo: "http://order-plus.base.yc345.tv"
+  cashApi:
+    scene: "红包裂变1111999"
+  testKey:
+    key1: "2021-04-09 19:38:5ddddddd"
+env: development
