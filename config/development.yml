@@ -2,7 +2,7 @@ yc:
   redis:
     ginblog:
       addr: 127.0.0.1:6379
-      password:
+      password: redis123456
       db: 1
       maxIdle: 200
       maxActive: 500
