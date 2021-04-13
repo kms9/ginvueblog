@@ -23,8 +23,6 @@ func init()  {
 		// Only log the warning severity or above.
 		log.SetLevel(log.TraceLevel)
 		log.SetReportCaller(true)
-
-
 }
 
 var ReConfig  *viper.Viper
@@ -139,11 +137,12 @@ func main()  {
 	signal.Notify(c, os.Interrupt,os.Kill)
 	fmt.Println("start!")
 
+	log.Info("xxxx111 ")
 
-	ConnNacos()
-	go TestViper()
-	s := <-c
-	fmt.Println("stop,signal:",s)
+	//ConnNacos()
+	//go TestViper()
+	//s := <-c
+	//fmt.Println("stop,signal:",s)
 }
 
 func TestViper()  {

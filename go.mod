@@ -20,10 +20,12 @@ require (
 	github.com/nacos-group/nacos-sdk-go v1.0.7
 	github.com/qiniu/go-sdk/v7 v7.9.1
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
+	github.com/shima-park/agollo v1.2.10
 	github.com/silenceper/log v0.0.0-20171204144354-e5ac7fa8a76a
 	github.com/sirupsen/logrus v1.7.0
 	github.com/spf13/viper v1.7.1
 	github.com/ugorji/go v1.2.4 // indirect
+	github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77
 	go.etcd.io/etcd v3.3.25+incompatible
 	golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad
 	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c // indirect
