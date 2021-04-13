@@ -22,7 +22,7 @@ func NewEngine() *Engine {
 	eng := &Engine{}
 	if err := eng.Start(
 		setup.StartLogger,
-		//setup.StartRedis,
+		setup.StartRedis,
 		//setup.StartConfig,
 		setup.StartNacosConfig,
 		//setup.StartDB,

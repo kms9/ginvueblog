@@ -14,8 +14,9 @@ var NacosConfig  *viper.Viper
 
 // StartLogger 初始日志
 func StartNacosConfig() error {
-	err:=ConnNacos()
+	err := ConnNacos()
 	if err!=nil {
+		Logger.Logger.Info(err)
 		return err
 	}
 	return nil
@@ -38,7 +39,7 @@ var ConfigMap = map[string]map[string]string{
 }
 
 func ConnNacos()  error {
-	tconfig:=ConfigMap["208"]
+	tconfig:=ConfigMap["201"]
 	var (
 		serverAdd 	= tconfig["serverAdd"]
 		dataId    	= tconfig["dataId"]
@@ -94,12 +95,17 @@ func ConnNacos()  error {
 	}
 	fmt.Println("GetConfig,config :" + content)
 	NacosConfig = viper.New()
+
+	Logger.Logger.Info(NacosConfig)
+
 	NacosConfig.SetConfigType("yaml")
 	err = NacosConfig.ReadConfig(strings.NewReader(content))
 	if err != nil {
 		fmt.Println("Viper解析配置失败:", err)
 		return err
 	}
+
+	Logger.Logger.Info(NacosConfig)
 
 	//Listen config change,key=dataId+group+namespaceId.
 	err = client.ListenConfig(vo.ConfigParam{
@@ -108,6 +114,7 @@ func ConnNacos()  error {
 		OnChange: func(namespace, group, dataId, data string) {
 			fmt.Println("config changed group:" + group + ", dataId:" + dataId + ", content:" + data)
 			err = NacosConfig.ReadConfig(strings.NewReader(data))
+			Logger.Logger.Info(NacosConfig)
 			if err != nil {
 				fmt.Println("Viper解析配置失败:", err)
 				panic(err)
@@ -117,6 +124,7 @@ func ConnNacos()  error {
 	})
 	if err!=nil{
 		//log.Error(err)
+		Logger.Logger.Info(err)
 		return err
 	}
 	return nil

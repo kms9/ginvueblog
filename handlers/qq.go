@@ -142,6 +142,8 @@ func convertToMap(str string) map[string]string {
 // qq回调逻辑
 func TestConf(c *gin.Context) {
 
+	//setup.Logger.Logger.Info(setup.NacosConfig)
+
 	testKey:= setup.NacosConfig.GetString("yc.testKey.key1")
 	fmt.Println(testKey)
 
