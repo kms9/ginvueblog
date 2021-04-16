@@ -144,7 +144,7 @@ func TestConf(c *gin.Context) {
 
 	//setup.Logger.Logger.Info(setup.NacosConfig)
 
-	testKey:= setup.NacosConfig.GetString("yc.testKey.key1")
+	testKey:= setup.NacosRConfig.GetString("yc.testKey.key1")
 	fmt.Println(testKey)
 
 	//log.Info(testKey)

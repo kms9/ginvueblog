@@ -19,12 +19,20 @@ type Engine struct {
 
 // NewEngine 初始化相关方法
 func NewEngine() *Engine {
+	//defer func() {
+	//	if err := recover(); err != nil {
+	//		debug.PrintStack()
+	//		return
+	//	}
+	//}()
+
 	eng := &Engine{}
 	if err := eng.Start(
 		setup.StartLogger,
-		setup.StartRedis,
+		//setup.StartRedis,
 		//setup.StartConfig,
-		setup.StartNacosConfig,
+		//setup.StartNacosConfig,
+		setup.StartNacosRConfig,
 		//setup.StartDB,
 		//setup.StartMysqlDB,
 		//setup.StartRequest,

@@ -19,4 +19,5 @@ config/config.ini
 /web/admin/package-lock.json
 /web/front/package-lock.json
 /vendor
-/config/log/
+/config/log/*
+/config/cache/*
